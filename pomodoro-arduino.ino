@@ -1,12 +1,12 @@
-#define buz	2
-#define b1  3
-#define b2  4
-#define b3  7
-#define b4  8
-#define m5	300
-#define m10	600
-#define m15	900
-#define m25	1500
+#define buz 2
+#define b1 3
+#define b2 4
+#define b3 7
+#define b4 8
+#define m5 300
+#define m10 600
+#define m15 900
+#define m25 1500
 #define lonMax 4294967294
 unsigned long tempoInicial = 0;
 unsigned long tempoEscolhido = 0;
@@ -20,7 +20,7 @@ void setup() {
   ledLoop(true);
   delay(1000);
   ledStatus = false;
-  
+
   //start serial connection
   // Serial.begin(9600);
 
@@ -37,10 +37,10 @@ void setup() {
 }
 
 void loop() {
- 
+
   ledLoop(ledStatus);
   Serial.println(ledStatus);
-  
+
   int botao5 = digitalRead(b1);
   int botao10 = digitalRead(b2);
   int botao15 = digitalRead(b3);
@@ -49,39 +49,36 @@ void loop() {
   unsigned long tempoAtual = millis() / 1000;
 
   if (botao5 == HIGH) {
-    tempoEscolhido = m5;
-    tempoInicial = millis() / 1000;
-    delay(100);
-    ledLoop(true); //start timer
+    startPomodoro(m5);
   }
 
   if (botao10 == HIGH) {
-    tempoEscolhido = m10;
-    tempoInicial = millis() / 1000;
-    delay(100);
-    ledLoop(true);
+    startPomodoro(m10);
   }
 
   if (botao15 == HIGH) {
-    tempoEscolhido = m15;
-    tempoInicial = millis() / 1000;
-    ledLoop(true);
-    delay(100);
+    startPomodoro(m15);
   }
 
   if (botao25 == HIGH) {
-    tempoEscolhido = m25;
-    tempoInicial = millis() / 1000;
-    ledLoop(true);
-    delay(100);
+    startPomodoro(m25);
   }
 
-//finalizando o timer
+
+  //finalizando o timer
   if (tempoEscolhido > 0) {
     ledStatus = false;
-    int diferenca = tempoAtual - tempoInicial ;
+    int diferenca = tempoAtual - tempoInicial;
     if (diferenca >= tempoEscolhido) {
       tocaRaul();
     }
   }
+}
+
+void startPomodoro(int value) {
+  tempoEscolhido = value;
+  tempoInicial = millis() / 1000;
+  ledBoolean(true);
+  delay(300);
+  ledBoolean(false);
 }

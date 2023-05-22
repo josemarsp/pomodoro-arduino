@@ -1,4 +1,4 @@
-int ddd = 300;
+int mils = 300;
 void ledBoolean(boolean val) {
   if (val) {
     digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -16,16 +16,16 @@ void ledBoolean(boolean val) {
 void ledLoop(boolean val) {
   if (val) {
     digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(ddd);
+    delay(mils);
     digitalWrite(5, LOW);   // turn the LED on (LOW is the voltage level)
     digitalWrite(6, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(ddd);
+    delay(mils);
     digitalWrite(6, LOW);   // turn the LED on (LOW is the voltage level)
     digitalWrite(9, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(ddd);
+    delay(mils);
     digitalWrite(9, LOW);   // turn the LED on (LOW is the voltage level)
     digitalWrite(10, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(ddd);
+    delay(mils);
     digitalWrite(10, LOW);   // turn the LED on (LOW is the voltage level)
   }
 }
